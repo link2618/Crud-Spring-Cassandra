@@ -6,7 +6,7 @@ tambien se usa Swagger2 y Swagger UI para la documentación y pruebas de los end
 <details>
   <summary>Ver enlaces de Swagger</summary>
   
-  [Swagger2](https://mvnrepository.com/artifact/io.springfox/springfox-swagger2)
+  [Swagger2](https://mvnrepository.com/artifact/io.springfox/springfox-swagger2) <br>
   [Swagger UI](https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui)
 </details>
 
@@ -14,18 +14,21 @@ tambien se usa Swagger2 y Swagger UI para la documentación y pruebas de los end
 
 - Creacion de keyspace (spring_backend_crud_apirest_cassandra): <br>
 `CREATE KEYSPACE spring_backend_crud_apirest_cassandra WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':1};`
-- Se verifica que el Keyspace se cree de forma satisfactoria: `DESC KEYSPACES;`
+- Se verifica que el Keyspace se cree de forma satisfactoria: `DESC KEYSPACES;` debe verse algo como:
+```
+    system_schema  system              spring_backend_crud_apirest_cassandra
+```
 - Indicamos que queremos usar el keyspace <b>spring_backend_crud_apirest_cassandra</b>: <br>
 `USE spring_backend_crud_apirest_cassandra;`
 - Se crea la tabla productos:<br>
 ```sh
-CREATE TABLE productos(
-   id timeuuid PRIMARY KEY,
-   nombre text,
-   precio double,
-   activo boolean,
-   cantidad int
-);
+    CREATE TABLE productos(
+       id timeuuid PRIMARY KEY,
+       nombre text,
+       precio double,
+       activo boolean,
+       cantidad int
+    );
 ```
 - Para obtener más información de la tabla que acabamos de crear simplemente ejecutamos:
 `DESC SCHEMA;`
