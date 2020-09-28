@@ -1,19 +1,16 @@
 package com.springcassandracrud.crudsassandraspring.controllers;
 
-import com.datastax.driver.core.utils.UUIDs;
 import com.springcassandracrud.crudsassandraspring.models.entity.Producto;
-import com.springcassandracrud.crudsassandraspring.repository.IProducto;
 import com.springcassandracrud.crudsassandraspring.services.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api/producto")
 public class ProductoController {

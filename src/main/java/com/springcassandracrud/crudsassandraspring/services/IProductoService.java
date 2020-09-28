@@ -11,11 +11,11 @@ import java.util.UUID;
 
 public interface IProductoService {
 
-    ResponseEntity<Producto> crearProducto(@RequestBody Producto producto);
+    ResponseEntity<Producto> crearProducto(Producto producto);
     ResponseEntity<List<Producto>> verTodos();
-    ResponseEntity<Producto> verPorId(@PathVariable UUID id);
+    ResponseEntity<Producto> verPorId(UUID id);
     ResponseEntity<List<Producto>> verActivos();
-    ResponseEntity<Producto> ActualizarProducto(@PathVariable UUID id, @RequestBody Producto producto);
-    ResponseEntity<HttpStatus> eliminarProductoId(@PathVariable UUID id);
+    ResponseEntity<Producto> ActualizarProducto(UUID id, Producto producto);
+    ResponseEntity<HttpStatus> eliminarProductoId(UUID id);
     ResponseEntity<HttpStatus> eliminarProductos();
 }
