@@ -30,6 +30,17 @@ tambien se usa Swagger2 y Swagger UI para la documentación y pruebas de los end
        cantidad int
     );
 ```
+- Se crea la tabla clientes:<br>
+```sh
+    CREATE TABLE clientes(
+       id timeuuid PRIMARY KEY,
+       nombre text,
+       apellido text,
+       email text,
+       create_at date,
+       update_at date
+    );
+```
 - Para obtener más información de la tabla que acabamos de crear simplemente ejecutamos:
 `DESC SCHEMA;`
 - Para ver la tabla que creamos se usa: `SELECT * FROM productos;`
