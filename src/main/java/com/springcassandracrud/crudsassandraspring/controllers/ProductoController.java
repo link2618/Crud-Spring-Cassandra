@@ -24,7 +24,7 @@ public class ProductoController {
      * *************************************
      */
     @PostMapping("/add")
-    public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
+    public ResponseEntity<?> crearProducto(@RequestBody Producto producto) {
         return productoServicio.crearProducto(producto);
     }
 
@@ -34,17 +34,17 @@ public class ProductoController {
      * *************************************
      */
     @GetMapping("/ver")
-    public ResponseEntity<List<Producto>> verTodos(){
+    public ResponseEntity<?> verTodos(){
         return productoServicio.verTodos();
     }
 
     @GetMapping("/ver/{id}")
-    public ResponseEntity<Producto> verPorId(@PathVariable UUID id){
+    public ResponseEntity<?> verPorId(@PathVariable UUID id){
         return productoServicio.verPorId(id);
     }
 
     @GetMapping("/ver/activo")
-    public ResponseEntity<List<Producto>> verActivos(){
+    public ResponseEntity<?> verActivos(){
         return productoServicio.verActivos();
     }
 
@@ -54,7 +54,7 @@ public class ProductoController {
      * *************************************
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Producto> ActualizarProducto(@PathVariable UUID id, @RequestBody Producto producto) {
+    public ResponseEntity<?> ActualizarProducto(@PathVariable UUID id, @RequestBody Producto producto) {
         return productoServicio.ActualizarProducto(id, producto);
     }
 
@@ -64,12 +64,12 @@ public class ProductoController {
      * *************************************
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> eliminarProductoId(@PathVariable UUID id) {
+    public ResponseEntity<?> eliminarProductoId(@PathVariable UUID id) {
         return eliminarProductoId(id);
     }
 
     @DeleteMapping("/delete/all")
-    public ResponseEntity<HttpStatus> eliminarProductos() {
+    public ResponseEntity<?> eliminarProductos() {
         return eliminarProductos();
     }
 }

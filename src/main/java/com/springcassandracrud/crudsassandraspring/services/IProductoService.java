@@ -11,11 +11,12 @@ import java.util.UUID;
 
 public interface IProductoService {
 
-    ResponseEntity<Producto> crearProducto(Producto producto);
-    ResponseEntity<List<Producto>> verTodos();
-    ResponseEntity<Producto> verPorId(UUID id);
-    ResponseEntity<List<Producto>> verActivos();
-    ResponseEntity<Producto> ActualizarProducto(UUID id, Producto producto);
-    ResponseEntity<HttpStatus> eliminarProductoId(UUID id);
-    ResponseEntity<HttpStatus> eliminarProductos();
+    // Al poner ? en el tipo recibe cualquier tipo de dato
+    ResponseEntity<?> crearProducto(Producto producto);
+    ResponseEntity<?> verTodos();
+    ResponseEntity<?> verPorId(UUID id);
+    ResponseEntity<?> verActivos();
+    ResponseEntity<?> ActualizarProducto(UUID id, Producto producto);
+    ResponseEntity<?> eliminarProductoId(UUID id);
+    ResponseEntity<?> eliminarProductos();
 }
