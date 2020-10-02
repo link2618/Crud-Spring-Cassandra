@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -22,19 +22,12 @@ public class ClienteController {
      * *************************************
      */
     @PostMapping("/add")
-    public ResponseEntity<Cliente> crearCliente(@RequestBody Cliente cliente) {
-        Date fecha = new Date();
-        System.out.println(fecha);
-        long lnMilisegundos = fecha.getTime();
-        java.sql.Date sqlDate = new java.sql.Date(lnMilisegundos);
+    public ResponseEntity<?> crearCliente(@RequestBody Cliente cliente) {
+        LocalDate ahora = LocalDate.now();
 
-        cliente.setCreateAt(sqlDate);
-        cliente.setUpdateAt(sqlDate);
-
-        //cliente.setUpdateAt(fecha);
-        //cliente.setUpdateAt(fecha);
+        cliente.setCreateAt(ahora);
+        cliente.setUpdateAt(ahora);
 
         return clienteSevicio.crearCliente(cliente);
-        //return null;
     }
 }

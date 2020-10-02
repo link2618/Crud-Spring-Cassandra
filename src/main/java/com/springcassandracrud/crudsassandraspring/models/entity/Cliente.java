@@ -5,6 +5,7 @@ import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -18,9 +19,9 @@ public class Cliente {
     private String apellido;
     private String email;
     @Column("create_at")
-    private Date createAt;
+    private LocalDate createAt;
     @Column("update_at")
-    private Date updateAt;
+    private LocalDate updateAt;
 
     public Cliente() {
     }
@@ -32,7 +33,7 @@ public class Cliente {
         this.email = email;
     }
 
-    public Cliente(UUID id, String nombre, String apellido, String email, Date createAt, Date updateAt) {
+    public Cliente(UUID id, String nombre, String apellido, String email, LocalDate createAt, LocalDate updateAt) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -73,19 +74,19 @@ public class Cliente {
         this.email = email;
     }
 
-    public Date getCreateAt() {
+    public LocalDate getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Date createAt) {
+    public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
-    public Date getUpdateAt() {
+    public LocalDate getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
+    public void setUpdateAt(LocalDate updateAt) {
         this.updateAt = updateAt;
     }
 }

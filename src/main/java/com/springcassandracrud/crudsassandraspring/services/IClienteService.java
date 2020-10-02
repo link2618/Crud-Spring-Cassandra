@@ -5,5 +5,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface IClienteService {
 
-    ResponseEntity<Cliente> crearCliente(Cliente cliente);
+    ResponseEntity<?> crearCliente(Cliente cliente);
 }
