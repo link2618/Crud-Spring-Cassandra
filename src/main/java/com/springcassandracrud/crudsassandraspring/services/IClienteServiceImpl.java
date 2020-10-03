@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -27,12 +28,21 @@ public class IClienteServiceImpl implements IClienteService {
     @Override
     public ResponseEntity<?> crearCliente(Cliente cliente) {
         Map<String, Object> response = new HashMap<>();
+        List<Cliente> clientes = null;
 
         try {
 //            System.out.println(((Object)cliente.getCreateAt()).getClass().getSimpleName());
 //            System.out.println(cliente.getCreateAt());
-            Cliente _cliente = clienteRepositorio.save(new Cliente(UUIDs.timeBased(), cliente.getNombre(), cliente.getApellido(), cliente.getEmail(), cliente.getCreateAt(), cliente.getUpdateAt()));
-            return new ResponseEntity<Cliente>(_cliente, HttpStatus.CREATED);
+            clientes = clienteRepositorio.findByEmail(cliente.getEmail());
+            if(clientes.isEmpty()){
+                // No existe el email en la BD
+                Cliente _cliente = clienteRepositorio.save(new Cliente(UUIDs.timeBased(), cliente.getNombre(), cliente.getApellido(), cliente.getEmail(), cliente.getCreateAt(), cliente.getUpdateAt()));
+                return new ResponseEntity<Cliente>(_cliente, HttpStatus.CREATED);
+            } else {
+                response.put("Mensaje", "El email que esta intentando registrar ya esta registrado.");
+                return new ResponseEntity<Map<String, Object>>(response,HttpStatus.BAD_REQUEST);
+            }
+
         }catch (DataAccessException e) {
             response.put("Mensaje", "Error al realizar el insert a la BD.");
             response.put("Error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
