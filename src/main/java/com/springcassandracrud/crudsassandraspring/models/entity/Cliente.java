@@ -4,7 +4,10 @@ import lombok.Data;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -14,8 +17,12 @@ public class Cliente {
 
     @PrimaryKey
     private UUID id;
+//    @NotBlank(message = "No puede estar vacio el nombre.")
     private String nombre;
     private String apellido;
+//    @Email(message = "No tiene un formato valido el email.")
+//    @NotBlank(message = "El email no puede estar vacio.")
+//    @NonNull
     private String email;
     @Column("create_at")
     private LocalDate createAt;
