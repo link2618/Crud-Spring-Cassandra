@@ -39,6 +39,14 @@ public class Cliente {
         this.email = email;
     }
 
+    public Cliente(UUID id, String nombre, String apellido, String email, LocalDate updateAt) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.updateAt = updateAt;
+    }
+
     public Cliente(UUID id, String nombre, String apellido, String email, LocalDate createAt, LocalDate updateAt) {
         this.id = id;
         this.nombre = nombre;
